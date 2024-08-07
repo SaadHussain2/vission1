@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>WaterLand - Water Park Website Template</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="./css3/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="./css3/style.css" rel="stylesheet">
+    </head>
+<style>
+    * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Arial', sans-serif;
+}
+
+body {
+}
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: linear-gradient(90deg, #1d2b64, #00c3ff);
+	padding: 1rem 2rem;
+	position: relative;
+	z-index: 20;
+	margin-bottom: 5px;
+    height: 92px;
+}
+
+.logo {
+	cursor: pointer;
+}
+
+.logo img {
+	height: 90px;
+	transition: transform 0.3s;
+}
+
+.logo img:hover {
+	transform: rotate(300deg);
+}
+
+.nav-list {
+	list-style: none;
+	display: flex;
+	align-items: center;
+}
+
+.nav-list li {
+	position: relative;
+}
+
+.nav-list li a {
+	text-decoration: none;
+	color: #fff;
+	padding: 1rem;
+	display: block;
+	transition: color 0.3s, transform 0.3s;
+}
+
+.nav-list li a:hover {
+	color: #99002e;
+	transform: scale(1.3);
+}
+
+.nav-list li .dropdown-menu {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background: #1d2b64;
+	padding: 1rem;
+	border-radius: 8px;
+	box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+	transition: opacity 0.3s, transform 0.3s;
+	transform: translateY(10px);
+	opacity: 0;
+}
+
+.nav-list li .dropdown-menu li a {
+	padding: 0.5rem 1rem;
+}
+
+.nav-list li .dropdown-menu li a:hover {
+	background: #08c5c5;
+	color: #212c5a;
+	border-radius: 4px;
+}
+
+.nav-list li:hover .dropdown-menu {
+	display: block;
+	transform: translateY(0);
+	opacity: 1;
+}
+
+@media (max-width: 768px) {
+	.navbar {
+		flex-direction: column;
+		align-items: flex-start;
+		height: auto;
+	}
+
+	.logo img {
+		height: 60px;
+	}
+
+	.nav-list {
+		flex-direction: column;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		background: #1d2b64;
+		padding: 1rem;
+		border-radius: 8px;
+		box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+		transform: translateY(10px);
+		opacity: 0;
+		transition: opacity 0.3s, transform 0.3s;
+		display: none; /* Start hidden */
+	}
+
+	.nav-list.active {
+		display: flex; /* Show when active */
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.nav-list li {
+		margin-bottom: 1rem;
+	}
+
+	.nav-list li a {
+		padding: 1rem;
+	}
+
+	.nav-list li .dropdown-menu {
+		position: static;
+		opacity: 1;
+		transform: translateY(0);
+		box-shadow: none;
+		padding: 1rem 0;
+	}
+
+	.nav-list li .dropdown-menu li a {
+		padding: 0.5rem 1rem;
+	}
+
+	.nav-list li .dropdown-menu li a:hover {
+		background: #08c5c5;
+		color: #212c5a;
+		border-radius: 4px;
+	}
+}
+.floating-icons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.floating-icons span {
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 40px;
+    color: rgb(0, 217, 255);
+    bottom: -150px;
+    animation: float 16s infinite;
+    z-index: 1;
+    font-size: 24px;
+}
+
+.floating-icons span:nth-child(1) {
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.floating-icons span:nth-child(2) {
+    left: 40%;
+    animation-delay: 2s;
+}
+
+.floating-icons span:nth-child(3) {
+    left: 60%;
+    animation-delay: 4s;
+}
+
+.floating-icons span:nth-child(4) {
+    left: 80%;
+    animation-delay: 8s;
+}
+
+.floating-icons span:nth-child(5) {
+    left: 90%;
+    animation-delay: 17s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-600px);
+        opacity: 0;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-list li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .dropdown-menu {
+        left: -10px;
+    }
+}
+
+
+
+.floating-icons {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.floating-icons span {
+    display: inline-block;
+    margin: 0 10px;
+    animation: float 3s infinite ease-in-out;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 50px 0;
+    position: relative;
+    overflow: hidden;
+    text-align: center; /* Center text in the footer */
+}
+
+.footer .container {
+    max-width: 1200px; /* Set a max-width for the container */
+    margin: 0 auto; /* Center the container */
+    padding: 0 15px; /* Add some padding */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo img {
+    width: 150px;
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.footer-logo img:hover {
+    transform: scale(1.1);
+}
+
+ul {
+    list-style: none;
+  }
+  
+  .example-2 {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-left: -1050px;
+    margin-top: 1;
+  }
+  .example-2 .icon-content {
+    margin: 0 10px;
+    position: relative;
+  }
+  .example-2 .icon-content .tooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  .example-2 .icon-content:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    top: -50px;
+  }
+  .example-2 .icon-content a {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #4d4d4d;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+  .example-2 .icon-content a:hover {
+    box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+  }
+  .example-2 .icon-content a svg {
+    position: relative;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+  }
+  .example-2 .icon-content a:hover {
+    color: white;
+  }
+  .example-2 .icon-content a .filled {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #000;
+    transition: all 0.3s ease-in-out;
+  }
+  .example-2 .icon-content a:hover .filled {
+    height: 100%;
+  }
+  .example-2 .icon-content a[data-social="spotify"] .filled,
+  .example-2 .icon-content a[data-social="spotify"] ~ .tooltip {
+    background-color: #1db954;
+  }
+  .example-2 .icon-content a[data-social="pinterest"] .filled,
+  .example-2 .icon-content a[data-social="pinterest"] ~ .tooltip {
+    background-color: #bd081c;
+  }
+  .example-2 .icon-content a[data-social="dribbble"] .filled,
+  .example-2 .icon-content a[data-social="dribbble"] ~ .tooltip {
+    background-color: #ea4c89;
+  }
+  .example-2 .icon-content a[data-social="telegram"] .filled,
+  .example-2 .icon-content a[data-social="telegram"] ~ .tooltip {
+    background-color: #0088cc;
+  }
+  
+
+  .footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #00aced;
+}
+
+
+
+.footer-bottom {
+    background-color: #111;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 100px;
+    height: 100px;
+    background-color: #00aced;
+    border-radius: 50%;
+    z-index: 1;
+    animation: move 5s infinite;
+}
+
+.footer::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background-color: #00aced;
+    border-radius: 50%;
+    z-index: 1;
+    animation: move 5s infinite;
+    animation-delay: 2.5s;
+}
+
+@keyframes move {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(50px, 50px);
+    }
+}
+</style>
+    <body>
+        <nav class="navbar">
+            <div class="logo" onclick="toggleNavbar()">
+                <a href="#"><img src="./yKHtAv-removebg-preview.png" alt="Invention Hub Logo"></a>
+            </div>
+            <ul class="nav-list">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="#">Inventions <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="./invention.html">Latest Inventions</a></li>
+                        <li><a href="./invention.html">Top Inventions</a></li>
+                        <li><a href="./invention.html">Future Innovations</a></li>
+                    </ul>
+                </li>
+                <li><a href="./blogs.html">Blog</a></li>
+                <li><a href="./contect.html">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+      
+
+        <!-- Header Start -->
+        <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">About Us</h4>
+             
+            </div>
+        </div>
+        <!-- Header End -->
+
+        <!-- About Start -->
+        <div class="container-fluid about py-5">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-xl-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <div>
+                            <h4 class="text-primary">Revolutionizing Industries
+
+                            </h4>
+                            <h1 class="display-5 mb-4">Artificial Intelligence: Revolutionizing Industries
+
+                            </h1>
+                            <p class="mb-5"> This has not only facilitated social interactions but has also paved the way for remote work, online education, and access to a vast array of information and resources, significantly impacting various aspects of daily life.
+                            </p>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="d-flex">
+                                        <div class="me-3"><i class="fas fa-cogs fa-3x text-primary"></i></div>
+
+                                        <div>
+                                            <h4>The Evolution of Personal Computers
+
+                                            </h4>
+                                            <p>They enable us to stay connected, informed, and entertained on the go. With the integration of apps, smartphones have also revolutionized industries such as healthcare, finance, and retail, offering innovative solutions and services that were once unimaginable.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex">
+                                        <div class="me-3"><i class="fas fa-lightbulb fa-3x text-primary"></i></div>
+
+                                        <div>
+                                            <h4>The Rise of E-Commerce: Changing Shopping Habits
+                                            </h4>
+                                            <p>The development of smartphones has further pushed the boundaries of technological advancement. Combining the functionalities of a computer, camera, GPS, </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex">
+                                        <div class="me-3"><i class="fas fa-rocket fa-3x text-primary"></i></div>
+
+                                        <div>
+                                            <h4>3D Printing: Revolutionizing Manufacturing and Prototyping
+                                            </h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex">
+                                        <div class="me-3"><i class="fas fa-lock fa-3x text-primary"></i></div>
+                                        <div>
+                                            <h4>Safety Lockers</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="position-relative rounded">
+                            <div class="rounded" style="margin-top: 40px;">
+                                <div class="row g-0">
+                                    <div class="col-lg-12">
+                                        <div class="rounded mb-4">
+                                            <img src="./images (1).jfif" class="img-fluid rounded w-100" alt="" style="width: 100px;">
+                                        </div>
+                                        <div class="row gx-4 gy-0">
+                                            <div class="col-6">
+                                                <div class="counter-item bg-primary rounded text-center p-4 h-100">
+                                                    <div class="counter-item-icon mx-auto mb-3">
+                                                        <i class="fas fa-thumbs-up fa-3x text-white"></i>
+                                                    </div>
+                                                    <div class="counter-counting mb-3">
+                                                        <span class="text-white fs-2 fw-bold" data-toggle="counter-up">150</span>
+                                                        <span class="h1 fw-bold text-white">K +</span>
+                                                    </div>
+                                                    <h5 class="text-white mb-0">Happy Visitors</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="counter-item bg-dark rounded text-center p-4 h-100">
+                                                    <div class="counter-item-icon mx-auto mb-3">
+                                                        <i class="fas fa-certificate fa-3x text-white"></i>
+                                                    </div>
+                                                    <div class="counter-counting mb-3">
+                                                        <span class="text-white fs-2 fw-bold" data-toggle="counter-up">122</span>
+                                                        <span class="h1 fw-bold text-white"> +</span>
+                                                    </div>
+                                                    <h5 class="text-white mb-0">Awwards Winning</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rounded bg-primary p-4 position-absolute d-flex justify-content-center" style="width: 90%; height: 80px; top: -40px; left: 50%; transform: translateX(-50%);">
+                                <h3 class="mb-0 text-white">20 Years Experiance</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+
+        <!-- Feature Start -->
+        <div class="container-fluid feature pb-5">
+            <div class="container pb-5">
+                <div class="row g-4">
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="feature-item">
+                            <img src="./e77e364c-3f86-4550-802c-93e28162dfaf.jfif" class="img-fluid rounded w-100" alt="Image">
+                            <div class="feature-content p-4">
+                                <div class="feature-content-inner">
+                                    <h4 class="text-white">Best Pools</h4>
+                                    <p class="text-white">Another remarkable invention in technology is the rise of artificial intelligence (AI).Another remarkable invention in technology is the rise of artificial intelligence  </p>
+                                    <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="feature-item">
+                            <img src="./67ef494b-204f-475a-903e-5e129b9ed12e.jfif" class="img-fluid rounded w-100" alt="Image">
+                            <div class="feature-content p-4">
+                                <div class="feature-content-inner">
+                                    <h4 class="text-white">Waterslides</h4>
+                                    <p class="text-white"> AI has begun to reshape numerous fields, including medicine, transportation, and customer service.AI has begun to reshape numerous fields, including medicine, transportation, and customer service.
+
+
+
+
+                                    </p>
+                                    <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="feature-item">
+                            <img src="./ff4f99d5-422f-4242-9060-be597bad31ab.jfif" class="img-fluid rounded w-100" alt="Image">
+                            <div class="feature-content p-4">
+                                <div class="feature-content-inner">
+                                    <h4 class="text-white">River Rides</h4>
+                                    <p class="text-white">With the integration of apps, smartphones have also revolutionized industries such as healthcare, finance, and retail, offering innovative solutions and services that were once unimaginable.
+                                    </p>
+                                    <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Feature End -->
+
+        <!-- Gallery Start -->
+        <div class="container-fluid gallery pb-5">
+            <div class="container pb-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                    <h4 class="text-primary">Our Gallery</h4>
+                    <h1 class="display-5 mb-4">Renewable Energy Technologies: Powering a Sustainable Future
+                    </h1>
+                    <p class="mb-0"> The advent of the internet, for instance, has transformed communication and information sharing, making it possible for people across the globe to connect instantaneously. This has not only facilitated social interactions but has also paved the way for remote work, online education, and access to a vast array of information and resources, significantly impacting various aspects of daily life.
+                    </p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="gallery-item">
+                            <img src="./AAWXrdy.img-2.jpeg" class="img-fluid rounded w-100 h-100" alt="">
+                            <div class="search-icon">
+                                <a href="./AAWXrdy.img-2.jpeg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"><i class="fas fa-search-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="gallery-item">
+                            <img src="./ff4f99d5-422f-4242-9060-be597bad31ab.jfif" class="img-fluid rounded w-100 h-100" alt="">
+                            <div class="search-icon">
+                                <a href="./ff4f99d5-422f-4242-9060-be597bad31ab.jfif" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-2"><i class="fas fa-search-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="gallery-item">
+                            <img src="./d34ec9c5-dd76-4289-b124-3fecba83d1e8.jfif" class="img-fluid rounded w-100 h-100" alt="">
+                            <div class="search-icon">
+                                <a href="./d34ec9c5-dd76-4289-b124-3fecba83d1e8.jfif (1).jfif" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-3"><i class="fas fa-search-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="gallery-item">
+                            <img src="./67ef494b-204f-475a-903e-5e129b9ed12e.jfif" class="img-fluid rounded w-100 h-100" alt="">
+                            <div class="search-icon">
+                                <a href="./67ef494b-204f-475a-903e-5e129b9ed12e.jfif" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-4"><i class="fas fa-search-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="gallery-item">
+                            <img src="./bb99d829-7c92-45a8-a861-c3e438bffc96.jfif" class="img-fluid rounded w-100 h-100" alt="">
+                            <div class="search-icon">
+                                <a href="./bb99d829-7c92-45a8-a861-c3e438bffc96.jfif" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-5"><i class="fas fa-search-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="gallery-item">
+                            <img src="./maxresdefault.jpg" class="img-fluid rounded w-100 h-100" alt="">
+                            <div class="search-icon">
+                                <a href="./maxresdefault.jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-6"><i class="fas fa-search-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Gallery End -->
+
+        <!-- Team Start -->
+        <div class="container-fluid team pb-5">
+            <div class="container pb-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                    <h4 class="text-primary">Meet Our Team Members                    </h4>
+                    <h1 class="display-5 mb-4">Our Dedicated Team Member</h1>
+                    <p class="mb-0">At the heart of our innovation and success lies our dedicated and diverse team of professionals. Each member brings a unique set of skills and expertise, contributing to our collective mission of pushing technological boundaries. From visionary engineers and creative designers to strategic thinkers and meticulous project managers, our team collaborates seamlessly to bring groundbreaking ideas to life. Together, we are committed to fostering an environment of creativity, excellence, and continuous learning, ensuring that we remain at the forefront of technological advancements. </p>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="team-item p-4">
+                            <div class="team-content">
+                                <div class="d-flex justify-content-between border-bottom pb-4">
+                                    <div class="text-start">
+                                        <h4 class="mb-0">David James</h4>
+                                        <p class="mb-0">Profession</p>
+                                    </div>
+                                    <div>
+                                        <img src="img/team-1.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                                    </div>
+                                </div>
+                                <div class="team-icon rounded-pill my-4 p-3">
+                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-linkedin-in"></i></a>
+                                    <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i class="fab fa-instagram"></i></a>
+                                </div>
+                                <p class="text-center mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, quibusdam eveniet itaque provident sequi deserunt.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="team-item p-4">
+                            <div class="team-content">
+                                <div class="d-flex justify-content-between border-bottom pb-4">
+                                    <div class="text-start">
+                                        <h4 class="mb-0">William John</h4>
+                                        <p class="mb-0">Profession</p>
+                                    </div>
+                                    <div>
+                                        <img src="img/team-2.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                                    </div>
+                                </div>
+                                <div class="team-icon rounded-pill my-4 p-3">
+                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-linkedin-in"></i></a>
+                                    <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i class="fab fa-instagram"></i></a>
+                                </div>
+                                <p class="text-center mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, quibusdam eveniet itaque provident sequi deserunt.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="team-item p-4">
+                            <div class="team-content">
+                                <div class="d-flex justify-content-between border-bottom pb-4">
+                                    <div class="text-start">
+                                        <h4 class="mb-0">Michael John</h4>
+                                        <p class="mb-0">Profession</p>
+                                    </div>
+                                    <div>
+                                        <img src="img/team-3.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                                    </div>
+                                </div>
+                                <div class="team-icon rounded-pill my-4 p-3">
+                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-linkedin-in"></i></a>
+                                    <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i class="fab fa-instagram"></i></a>
+                                </div>
+                                <p class="text-center mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, quibusdam eveniet itaque provident sequi deserunt.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Team End -->
+
+        <footer class="footer" class="footer">
+            <div class="floating-icons">
+                <span><i class="fas fa-cog"></i></span>
+                <span><i class="fas fa-lightbulb"></i></span>
+                <span><i class="fas fa-robot"></i></span>
+                <span><i class="fas fa-rocket"></i></span>
+                <span><i class="fas fa-tools"></i></span>
+            </div>
+            >
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <img src="./yKHtAv-removebg-preview.png" alt="Smart Invention Logo">
+                    </div>
+                    <ul class="example-2">
+                        <li class="icon-content">
+                          <a
+                            data-social="spotify"
+                            aria-label="Spotify"
+                            href="https://www.spotify.com/"
+                          >
+                          <div class="floating-icons">
+                            <span>⭐</span>
+                            <span>⚙️</span>
+                            <span>💡</span>
+                            <span>🚀</span>
+                            <span>🔬</span>
+                        </div>
+                            <div class="filled"></div>
+                            <svg viewBox="0 0 100 100" version="1.1">
+                              <path
+                                fill="currentColor"
+                                d="M50,4C24.7,4,4,24.7,4,50s20.6,46,46,46s46-20.6,46-46S75.4,4,50,4z M71.6,71.5c0,0,0,0.1-0.1,0.1c-0.8,1.2-2,1.8-3.2,1.8  c-0.7,0-1.4-0.2-2-0.6c-10.2-6.3-23.3-7.7-38.8-4.1c-2.1,0.6-4-0.9-4.5-2.7c-0.6-2.3,0.9-4.1,2.7-4.6c17.7-4,32.6-2.3,44.4,5  c0.9,0.4,1.5,1,1.8,1.9C72.2,69.3,72.1,70.5,71.6,71.5z M76.9,59.3L76.9,59.3c-0.8,1.1-1.9,1.9-3.2,2.1c-0.2,0-0.5,0.1-0.7,0.1  c-0.8,0-1.6-0.3-2.3-0.7c-12-7.3-30.1-9.4-43.9-5c-2.5,0.6-5-0.7-5.6-3c-0.6-2.5,0.7-4.9,3-5.5c16.5-5,37.2-2.5,51.4,6.2  c0.8,0.4,1.5,1.3,1.8,2.5C77.9,57,77.6,58.3,76.9,59.3z M83.2,45.6c-1,1.4-2.7,2.1-4.4,2.1c-0.9,0-1.9-0.2-2.7-0.7c0,0,0,0,0,0  c-13.9-8.3-37.8-9.3-51.4-5.1c-2.7,0.8-5.5-0.7-6.4-3.3c-0.8-2.7,0.7-5.6,3.3-6.4c16.2-4.8,43-3.8,59.8,6.2  C83.8,39.6,84.7,42.9,83.2,45.6C83.3,45.5,83.3,45.5,83.2,45.6z"
+                              ></path>
+                            </svg>
+                          </a>
+                          <div class="tooltip">Spotify</div>
+                        </li>
+                        <li class="icon-content">
+                          <a
+                            data-social="pinterest"
+                            aria-label="Pinterest"
+                            href="https://www.pinterest.com/"
+                          >
+                            <div class="filled"></div>
+                            <svg xml:space="preserve" viewBox="0 0 100 100" version="1.1">
+                              <path
+                                fill="currentColor"
+                                d="M83,17.8C74.5,8.9,63.4,4.3,50,4.1C37.7,4.2,26.8,8.6,17.9,17.3C8.9,26,4.3,37,4.1,50c0,0,0,0,0,0c0,9.1,2.5,17.4,7.4,24.9  c4.9,7.4,11.6,13.2,20.1,17.1c0.3,0.1,0.7,0.1,1-0.1c0.3-0.2,0.5-0.5,0.5-0.8l0-4.9c0.1-2.1,0.7-5.3,1.7-9.5c1-4,1.7-6.7,1.9-7.6  c0.7-3,1.7-7.2,3-12.6c0.1-0.2,0-0.5-0.1-0.7c-0.4-0.8-1-2.6-1.5-6.6c0.1-2.7,0.8-5.2,2.1-7.3c1.2-2,3.1-3.1,5.7-3.5  c2,0.1,4.7,0.8,5.1,5.9c-0.1,1.8-0.8,4.5-1.9,8.1c-1.2,3.8-1.9,6.3-2.1,7.6c-0.7,2.5-0.2,4.8,1.5,6.8c1.6,1.9,3.8,2.9,6.5,3.1  c4.3-0.1,8.1-2.6,11.2-7.5c1.7-3,2.9-6.3,3.5-9.7c0.7-3.4,0.7-7.1,0-10.8c-0.7-3.8-2.2-7.1-4.5-9.8c0,0-0.1-0.1-0.1-0.1  c-4.3-3.7-9.5-5.3-15.6-5c-6,0.4-11.3,2.6-15.9,6.6c-2.9,3.2-4.8,7.1-5.7,11.6c-0.9,4.6,0,9.1,2.6,13.3c0.3,0.5,0.5,0.8,0.6,1  c0,0.3,0,1-0.5,2.8c-0.5,1.8-0.9,2.2-0.9,2.2c0,0-0.1,0-0.1,0.1c0,0-0.2,0-0.4-0.1c-2.2-1-3.9-2.4-5.2-4.2c-1.3-1.9-2.1-4-2.5-6.3  c-0.3-2.5-0.4-5-0.3-7.5c0.2-2.5,0.7-5.1,1.4-7.7c3-6.9,8.5-11.9,16.3-14.8c7.8-2.9,16-3.2,24.3-0.8c6.5,2.8,11,7.4,13.6,13.7  c2.5,6.4,2.8,13.4,0.8,20.8c-2.2,7.1-6.4,12.4-12.1,15.7c-5.6,2.8-10.8,3-15.7,0.7c-1.8-1.1-3.1-2.3-3.9-3.5c-0.2-0.3-0.6-0.5-1-0.5  c-0.4,0.1-0.7,0.3-0.8,0.7c-0.7,2.7-1.3,4.7-1.6,6.2c-1.4,5.4-2.6,9.2-3.4,11c-0.8,1.6-1.6,3.1-2.4,4.3c-0.2,0.3-0.2,0.6-0.1,0.9  s0.3,0.5,0.6,0.6c4.3,1.3,8.7,2,13,2c12.4-0.1,23.2-4.6,32.1-13.4C91.1,73.9,95.8,62.9,96,50C95.9,37.5,91.5,26.7,83,17.8z"
+                              ></path>
+                            </svg>
+                          </a>
+                          <div class="tooltip">Pinterest</div>
+                        </li>
+                        <li class="icon-content">
+                          <a
+                            data-social="dribbble"
+                            aria-label="Dribbble"
+                            href="https://dribbble.com/"
+                          >
+                            <div class="filled"></div>
+                            <svg viewBox="0 0 100 100" version="1.1">
+                              <path
+                                fill="currentColor"
+                                d="M83.5,18.5C74.9,9.3,62.8,4,50.2,4c-6.1,0-12,1.1-17.6,3.4C15.2,14.5,4,31.3,4,50c0,13.9,6.2,26.9,17,35.7  C29.2,92.3,39.4,96,50,96c6.6,0,13.2-1.5,19.2-4.2c12.5-5.7,21.7-16.6,25.2-29.8C95.5,57.9,96,53.8,96,50  C96,38.3,91.6,27.1,83.5,18.5z M75,22.3c-0.7,0.9-1.4,1.8-2.1,2.6c-1.4,1.6-2.8,3-4.4,4.3c-0.3,0.3-0.6,0.6-1,0.8  c-1,0.9-2.1,1.7-3.2,2.5l-0.3,0.2c-1.1,0.7-2.2,1.5-3.5,2.2c-0.4,0.3-0.9,0.5-1.4,0.8c-0.8,0.5-1.7,0.9-2.7,1.4  c-0.6,0.3-1.2,0.5-1.8,0.8L54.3,38c-0.1,0-0.2,0.1-0.3,0.1c0,0,0,0,0,0c-1.3-2.6-2.4-4.9-3.5-7l-0.3-0.5c-1.1-2-2.2-4-3.3-6  l-0.7-1.3c-1.1-1.9-2.2-3.7-3.2-5.4l-0.7-1.1c-0.7-1.2-1.4-2.3-2.2-3.5c3.2-0.8,6.5-1.3,9.8-1.3c9.4,0,18.4,3.5,25.4,9.8  C75.3,21.9,75.2,22.1,75,22.3z M46.4,40.6c-1.4,0.4-2.9,0.8-4.4,1.1c-0.3,0-0.7,0.1-0.9,0.2c-6,1-12.5,1.4-19.4,1.1  c-0.3,0-0.6,0-0.9,0c-0.3,0-0.5,0-0.7,0c-2.5-0.2-4.9-0.4-7.2-0.7c2.3-11.2,9.6-20.9,19.8-26.1c2.1,3.3,4.2,6.7,6.3,10.3l0.4,0.7  c0.9,1.6,1.9,3.4,3.2,5.8l0.6,1.2C44.4,36.6,45.4,38.6,46.4,40.6z M24.4,51.1c2.2,0.1,4.2,0,6.2-0.1l0.7,0c0.4,0,0.9,0,1.3,0  c2.8-0.2,5.5-0.5,8.5-1c0.5-0.1,1-0.2,1.6-0.3l0.5-0.1c2.2-0.4,4.2-0.9,6.1-1.4c0.1,0,0.3-0.1,0.4-0.1l0.5,1.1  c1.2,2.8,2.3,5.5,3.3,8.1c0,0,0,0,0,0c-0.2,0.1-0.5,0.2-0.7,0.2c-2,0.6-4,1.4-5.9,2.2c-0.6,0.3-1.3,0.5-1.9,0.8  c-1.4,0.6-2.7,1.3-4.1,2.1l-0.3,0.2c-0.2,0.1-0.5,0.2-0.6,0.4c-1.5,0.9-3.1,1.9-4.7,3c-0.2,0.1-0.4,0.3-0.6,0.4  c-0.2,0.1-0.4,0.3-0.6,0.5c-1,0.7-2,1.5-3,2.3c-0.4,0.3-0.7,0.6-1.1,0.9l-0.3,0.3c-0.7,0.6-1.5,1.3-2.2,1.9l-0.2,0.2  c-0.4,0.4-0.7,0.7-1.1,1.1l-0.2,0.2c-0.6,0.6-1.3,1.3-2,2l-0.4,0.4c-0.2,0.2-0.4,0.4-0.5,0.6C16.1,69.9,12,60.2,12,50.3  c0,0,0.1,0,0.1,0c0.4,0,0.7,0,1.1,0.1c3.5,0.4,6.9,0.6,10.3,0.7C23.8,51,24.1,51.1,24.4,51.1z M29.5,81.9c0.2-0.2,0.3-0.4,0.5-0.5  c1-1.1,2-2.1,3-3c1.9-1.8,3.8-3.3,5.7-4.8c0.2-0.1,0.4-0.3,0.6-0.4c0.2-0.2,0.5-0.4,0.8-0.6c1.1-0.8,2.2-1.5,3.4-2.2  c0.1-0.1,0.2-0.1,0.3-0.2c0.1-0.1,0.2-0.1,0.3-0.2c1.4-0.8,2.9-1.6,4.5-2.3c0.3-0.1,0.6-0.2,0.8-0.4l0.6-0.3  c1.1-0.5,2.2-0.9,3.5-1.4c0.5-0.2,1.1-0.4,1.7-0.6l0.2-0.1c0.4-0.1,0.7-0.2,1.1-0.3c0,0,0,0,0,0c1.1,3.2,2.3,6.4,3.3,9.8l0.1,0.4  c1.1,3.6,2,7.3,2.9,10.8C51.7,89.8,39.3,88.3,29.5,81.9C29.4,81.9,29.4,81.9,29.5,81.9z M65.6,62.9c0.7-0.1,1.3-0.2,2-0.2  c2-0.2,4-0.2,5.9-0.2c0.2,0,0.4,0,0.6,0l0.2,0c2.2,0.1,4.6,0.3,6.9,0.6c0.4,0.1,0.9,0.1,1.3,0.2l0.6,0.1c0.7,0.1,1.5,0.3,2.2,0.4  c-3,7.6-8.3,14-15.2,18.3c-0.8-3.1-1.7-6.2-2.6-9.2l-0.1-0.4c-0.9-3-1.9-6.1-3.1-9.5C64.8,63.1,65.2,63,65.6,62.9z M81.6,55.2  C80,55,78.4,54.9,77,54.8l-0.9-0.1c-0.9-0.1-1.9-0.1-2.8-0.2c-0.2,0-0.3,0-0.5,0c-0.2,0-0.4,0-0.6,0c-2,0-3.9,0.1-5.9,0.3  c-0.2,0-0.3,0-0.5,0.1c-0.1,0-0.2,0-0.3,0c-1.3,0.1-2.6,0.3-3.9,0.5c-0.1-0.1-0.1-0.3-0.2-0.4c-0.1-0.2-0.2-0.5-0.3-0.7  c-1.1-2.9-2.3-5.7-3.2-7.8l-0.3-0.6c-0.1-0.1-0.1-0.3-0.2-0.4c0,0,0,0,0.1,0c0.2-0.1,0.5-0.2,0.7-0.3c0.6-0.2,1.2-0.5,1.8-0.8  c1.2-0.5,2.4-1.2,3.6-1.8c0.1-0.1,0.3-0.2,0.5-0.2c0.2-0.1,0.5-0.2,0.7-0.4c1.5-0.9,2.9-1.8,4.2-2.7l0.3-0.2  c0.2-0.1,0.4-0.3,0.6-0.4c0.9-0.6,1.9-1.4,2.8-2.2c1.5-1.2,2.9-2.5,4.3-4c0.8-0.8,1.5-1.6,2.2-2.4l0.4-0.5c0.5-0.5,0.9-1.1,1.3-1.6  C85.5,34.3,88,42.1,88,50c0,2-0.2,4.1-0.5,6.1c-0.3,0-0.6-0.1-0.8-0.1c-0.4-0.1-0.7-0.1-1.1-0.2l-1.1-0.2  C83.5,55.5,82.5,55.3,81.6,55.2z"
+                              ></path>
+                            </svg>
+                          </a>
+                          <div class="tooltip">Dribbble</div>
+                        </li>
+                        <li class="icon-content">
+                          <a
+                            data-social="telegram"
+                            aria-label="Telegram"
+                            href="https://telegram.org/"
+                          >
+                            <div class="filled"></div>
+                            <svg viewBox="0 0 100 100" version="1.1">
+                              <path
+                                fill="currentColor"
+                                d="M95,9.9c-1.3-1.1-3.4-1.2-7-0.1c0,0,0,0,0,0c-2.5,0.8-24.7,9.2-44.3,17.3c-17.6,7.3-31.9,13.7-33.6,14.5  c-1.9,0.6-6,2.4-6.2,5.2c-0.1,1.8,1.4,3.4,4.3,4.7c3.1,1.6,16.8,6.2,19.7,7.1c1,3.4,6.9,23.3,7.2,24.5c0.4,1.8,1.6,2.8,2.2,3.2  c0.1,0.1,0.3,0.3,0.5,0.4c0.3,0.2,0.7,0.3,1.2,0.3c0.7,0,1.5-0.3,2.2-0.8c3.7-3,10.1-9.7,11.9-11.6c7.9,6.2,16.5,13.1,17.3,13.9  c0,0,0.1,0.1,0.1,0.1c1.9,1.6,3.9,2.5,5.7,2.5c0.6,0,1.2-0.1,1.8-0.3c2.1-0.7,3.6-2.7,4.1-5.4c0-0.1,0.1-0.5,0.3-1.2  c3.4-14.8,6.1-27.8,8.3-38.7c2.1-10.7,3.8-21.2,4.8-26.8c0.2-1.4,0.4-2.5,0.5-3.2C96.3,13.5,96.5,11.2,95,9.9z M30,58.3l47.7-31.6  c0.1-0.1,0.3-0.2,0.4-0.3c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0.1,0,0.1,0,0.2-0.1c-0.1,0.1-0.2,0.4-0.4,0.6L66,38.1  c-8.4,7.7-19.4,17.8-26.7,24.4c0,0,0,0,0,0.1c0,0-0.1,0.1-0.1,0.1c0,0,0,0.1-0.1,0.1c0,0.1,0,0.1-0.1,0.2c0,0,0,0.1,0,0.1  c0,0,0,0,0,0.1c-0.5,5.6-1.4,15.2-1.8,19.5c0,0,0,0,0-0.1C36.8,81.4,31.2,62.3,30,58.3z"
+                              ></path>
+                            </svg>
+                          </a>
+                          <div class="tooltip">Telegram</div>
+                        </li>
+                      </ul>
+                      
+                    <div class="footer-links">
+                        <a href="#">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">Services</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Privacy Policy</a>
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Smart Invention. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        
+
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script>
+		function toggleNavbar() {
+            const navList = document.querySelector('.nav-list');
+            navList.classList.toggle('active');
+        }
+	</script>
+
+    <!-- Template Javascript -->
+    <script src="./js3/main.js"></script>
+    </body>
+
+</html>
